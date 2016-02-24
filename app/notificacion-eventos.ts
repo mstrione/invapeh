@@ -1,7 +1,7 @@
     export interface NotificacionEventos {
       id: number;
       personaId: string;
-      appIdea: string;
+      appId: string;
       ccptId: string;
       sectorId: string;
       evento: string;

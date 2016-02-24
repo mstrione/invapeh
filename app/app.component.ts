@@ -65,8 +65,12 @@
       getNotificaciones() {
         this._notifService.getNotificaciones(this.evento, this.ccptId).subscribe(notificaciones => this.notificaciones = notificaciones, error =>  this.errorMessage = <any>error);
       }
+      addNotif(){
+        this._notifService.addNotif('QA', '1122', '1122' ).subscribe(notificaciones => this.notificaciones = notificaciones, error =>  this.errorMessage = <any>error);
+      }
       ngOnInit() {
         this.getNotificaciones();
+        this.addNotif();
       }
       onSelect(notif: NotificacionEventos) { this.selectedNotif = notif; }
     }

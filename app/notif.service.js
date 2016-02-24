@@ -26,6 +26,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                 function NotifService(http) {
                     this.http = http;
                     this._notifUrl = 'http://localhost:9697/ws/noconformidades/findNotificacionEventos';
+                    this._addUrl = 'http://localhost:9697/ws/noconformidades/addNotificacionEventos';
                 }
                 NotifService.prototype.getNotificaciones = function (evento, ccptId) {
                     //return Promise.resolve(NOTIFICACIONES);
@@ -34,6 +35,24 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                     searchParams.set('evento', evento);
                     searchParams.set('ccptId', ccptId);
                     return this.http.get(this._notifUrl, { search: searchParams })
+                        .map(function (res) { return res.json(); })
+                        .do(function (data) { return console.log(data); })
+                        .catch(this.handleError);
+                };
+                NotifService.prototype.addNotif = function (evento, ccptId, personaId) {
+                    var appId = '_2JD0URVLD';
+                    var body = JSON.stringify({ appId: appId, ccptId: ccptId, evento: evento, personaId: personaId });
+                    /*ne: NotificacionEventos;
+                    ne.appId = appId;
+                    ne.ccptId = ccptId;
+                    ne.evento = evento;
+                    ne.personaId = personaId;*/
+                    /* body = JSON.stringify({ ne });*/
+                    var creds = "?appId=" + appId + "&evento=" + evento + "&ccptId=" + ccptId + "&personaId=" + personaId;
+                    var headers = new http_1.Headers({ 'Content-Type': 'application/json', 'a8234': 'SSZNUR    ' });
+                    var options = new http_1.RequestOptions({ headers: headers });
+                    //return this.http.post(this._addUrl+creds, body, options)
+                    return this.http.post(this._addUrl, body, options)
                         .map(function (res) { return res.json(); })
                         .do(function (data) { return console.log(data); })
                         .catch(this.handleError);

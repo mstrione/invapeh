@@ -37,8 +37,13 @@ System.register(['angular2/core', './notif-detail.component', './notif.service',
                     var _this = this;
                     this._notifService.getNotificaciones(this.evento, this.ccptId).subscribe(function (notificaciones) { return _this.notificaciones = notificaciones; }, function (error) { return _this.errorMessage = error; });
                 };
+                AppComponent.prototype.addNotif = function () {
+                    var _this = this;
+                    this._notifService.addNotif('QA', '1122', '1122').subscribe(function (notificaciones) { return _this.notificaciones = notificaciones; }, function (error) { return _this.errorMessage = error; });
+                };
                 AppComponent.prototype.ngOnInit = function () {
                     this.getNotificaciones();
+                    this.addNotif();
                 };
                 AppComponent.prototype.onSelect = function (notif) { this.selectedNotif = notif; };
                 AppComponent = __decorate([
