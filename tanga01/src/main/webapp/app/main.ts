@@ -3,7 +3,7 @@ import {Component} from "angular2/core";
 
 @Component({
     selector: 'app',
-    template: '<div>Hola tanga 01!</div>'
+    template: '<div>Hola Angular 2!</div>'
 })
 class App{}
 

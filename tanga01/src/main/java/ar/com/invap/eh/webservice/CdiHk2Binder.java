@@ -16,7 +16,7 @@ public class CdiHk2Binder extends AbstractBinder {
     @Override
     protected void configure() {
         BeanManager beanManager = CDI.current().getBeanManager();
-        bind(getBean(beanManager, Tanga01Service.class)).to(Tanga01Service.class);
+        bind(getBean(beanManager, JerseyWebService.class)).to(JerseyWebService.class);
         bind(getBean(beanManager, EntityManager.class)).to(EntityManager.class);
     }
 
